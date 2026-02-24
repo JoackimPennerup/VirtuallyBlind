@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "VirtuallyBlind",
+  "version": "0.1.0",
+  "description": "Pedagogical virtual cursor simulator for screen-reader-style navigation.",
+  "permissions": ["storage", "activeTab"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "dist/background/serviceWorker.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["dist/content/index.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "commands": {
+    "toggle-extension": {
+      "suggested_key": {
+        "default": "Alt+Shift+V"
+      },
+      "description": "Toggle VirtuallyBlind"
+    }
+  },
+  "action": {
+    "default_title": "VirtuallyBlind"
+  }
+}
